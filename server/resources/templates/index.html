@@ -188,10 +188,10 @@
   chart.source(data, {
     percent: {
       formatter: val => {
-      val = (val * 100) + '%';
-  return val;
-  }
-  }
+        val = (val * 100) + '%';
+        return val;
+      }
+    }
   });
   chart.coord('theta', {
     radius: 0.75,
@@ -214,14 +214,14 @@
           .label('count', {
             formatter: (val, item) => {
             return item.point.item + ': ' + val;
-  }
+          }
   })
   .tooltip('item*percent', (item, percent) => {
     percent = percent * 100 + '%';
-  return {
-    name: item,
-    value: percent
-  };
+    return {
+      name: item,
+      value: percent
+    };
   })
   .style({
     lineWidth: 1,

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <div  th:replace="common/header.html"></div>
+
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div th:replace="common/chart.html"></div>
+
+<div class="wrapper">
+
+    <div th:replace="common/navbar.html"></div>
+
+    <div th:replace="common/aside.html"></div>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1></h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item active"></li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <div>主机：<span id="hostname" th:text="${systemInfo.hostname}"></span> 系统版本：<span id="osversion" th:text="${systemInfo.version}"></span>
+                        <span id="cc"></span> <div class=" float-sm-right"><a th:href="@{'/dash/systemInfoList'}">返回</a></div>
+                    </div>
+                </div>
+                <div>
+                    <iframe id="ifUrl" src="" width="100%" height="760" frameborder="no" border="0" marginwidth="0" marginheight="0"></iframe>
+                    <script>
+                        var URL_IP = parent.location.hostname;
+                        // var URL_PORT = parent.location.port;
+                        var OS_Version = osversion.innerText;
+                        var pathStr = "";
+                        if (/^\d+(\.\d+)?$/.test(OS_Version)){
+                            pathStr = "d/YDcLOYRZz/windows-system-overview?orgId=1&var-server=";
+                        } else {
+                            pathStr = "d/-djfhLRWz/linux-system-overview?orgId=1&var-Server=";
+                        }
+                        // window.location = "http://"+URL_IP.replace(":"+URL_PORT,"")+":3000/?orgId=1";
+                        ifUrl.src = "http://"+URL_IP+":3000/" + pathStr + hostname.innerText;
+                    </script>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <!--<div th:replace="common/footer.html"></div>-->
+
+</div>
+<!-- ./wrapper -->
+
+<script th:src="@{'/static/js/host.js'}"></script>
+
+
+</body>
+</html>

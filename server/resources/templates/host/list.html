@@ -85,8 +85,9 @@
                   </th:block>
               </td>
               <td th:text="${#dates.format(item.createTime,'yyyy-MM-dd HH:mm:ss')}">Update software</td>
-              <td> <button type="button"  th:onclick="view([[${item.id}]])"  class="btn btn-primary">系统信息</button>
-                  <button type="button"  th:onclick="viewChart([[${item.id}]])"  class="btn btn-primary">图表</button>
+              <td style="width: 360px"> <button type="button"  th:onclick="view([[${item.id}]])"  class="btn btn-primary">系统信息</button>
+                  <button type="button"  th:onclick="viewChart([[${item.id}]])"  class="btn btn-primary">监控图表</button>
+                  <button type="button"  th:onclick="viewGrafana([[${item.id}]])"  class="btn btn-primary">Grafana</button>
                   <button type="button"  th:onclick="del([[${item.id}]])"  class="btn bg-gradient-danger">删除</button></td>
 
             </tr>

@@ -117,12 +117,12 @@
     });
     toastr.options.timeOut = 15000;
     function onSubmit() {
-        $("#form1").attr("action","/wgcloud/dbInfo/save");
+        $("#form1").attr("action","/dbInfo/save");
         return true;
     }
 
     function test(){
-        $("#form1").attr("action","/wgcloud/dbInfo/validate");
+        $("#form1").attr("action","/dbInfo/validate");
         $("#form1").ajaxSubmit(function(message) {
             var msg = JSON.parse(message);
             if(msg.code!=""){

@@ -42,7 +42,7 @@ public class AuthRestFilter implements Filter {
             }
         }
         if(accountInfo==null){
-            response.sendRedirect("/wgcloud/login/toLogin");
+            response.sendRedirect("/login/toLogin");
             return;
         }
         filterChain.doFilter(servletRequest, servletResponse);

@@ -4562,7 +4562,8 @@ body.skin-atmosfero-admin {
 }
 .login-page {
 	background:#263238;
-	min-height:initial
+	min-height:initial;
+	background:url('/static/AdminLTE/dist/img/login_bg.jpg') repeat fixed;
 }
 .login-page .login-box .login-logo img {
 	/*! height:50px; */

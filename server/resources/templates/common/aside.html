@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="http://www.wgstart.com"  target="_blank" class="brand-link">
+    <a href="#" class="brand-link">
         <img th:src="@{'/static/logincss/logo.png'}"  class="brand-image img-circle elevation-3"
              style="opacity: .8">
         <span class="brand-text font-weight-light">WGCLOUD-v2.3</span>
@@ -149,13 +149,17 @@
                 </li>
 
                 <li class="nav-item">
-                    <a target="_blank" href="https://www.wgstart.com/elasticsearch-head/index.html"
+                    <a id="grafana_link" target="_blank"
                        class="nav-link">
                         <i class="nav-icon far fa-circle text-danger"></i>
-                        <p>ES集群监控</p>
+                        <p>Grafana监控</p>
                     </a>
                 </li>
-
+                <script>
+                    var URL_IP = window.location.hostname;
+                    // var URL_PORT = window.location.port;
+                    grafana_link.setAttribute("href","http://" + URL_IP +":3000/?orgId=1");
+                </script>
 
                 <th:block th:if="${#strings.startsWith(session.menuActive,'2')}">
                     <li class="nav-item has-treeview menu-open">

@@ -214,7 +214,30 @@ public class DashboardCotroller {
 		return "host/list";
 	}
 
-
+	/**
+	 * 跳转到grafana
+	 * @param model
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="grafana")
+	public String hostGrafana(Model model,HttpServletRequest request) {
+		//服务器名称
+		String id = request.getParameter("id");
+		if(StringUtils.isEmpty(id)){
+			return "error/500";
+		}
+		String hostname = "";
+		try {
+			SystemInfo systemInfo = systemInfoService.selectById(id);
+			hostname = systemInfo.getHostname();
+			model.addAttribute("systemInfo",systemInfo);
+		} catch (Exception e) {
+			logger.error("服务器详细信息错误：",e);
+			logInfoService.save(hostname,"查看服务器详细信息错误",e.toString());
+		}
+		return "host/viewGrafana";
+	}
 
 	/**
      * 根据IP查询服务器详情信息
