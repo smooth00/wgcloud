@@ -67,9 +67,9 @@ public class SigarUtil {
         double idle = 0;
         for (int i = 0; i < infos.length; i++) {// 不管是单块CPU还是多CPU都适用
             CpuInfo info = infos[i];
-            sys+=Double.valueOf(FormatUtil.delChar(CpuPerc.format(cpuList[i].getCombined())));
-            wait+=Double.valueOf(FormatUtil.delChar(CpuPerc.format(cpuList[i].getWait())));
-            idle+=Double.valueOf(FormatUtil.delChar(CpuPerc.format(cpuList[i].getIdle())));
+            sys+=Double.valueOf(FormatUtil.delChar(CpuPerc.format(cpuList[i].getCombined())).replace("N","0"));
+            wait+=Double.valueOf(FormatUtil.delChar(CpuPerc.format(cpuList[i].getWait())).replace("N","0"));
+            idle+=Double.valueOf(FormatUtil.delChar(CpuPerc.format(cpuList[i].getIdle())).replace("N","0"));
         }
         CpuState cpuState = new CpuState();
         cpuState.setSys(FormatUtil.formatDouble(sys/infos.length,1));
@@ -96,6 +96,7 @@ public class SigarUtil {
             systemInfo.setCpuXh(infos[0].getModel());
         }
         systemInfo.setVersion(OS.getVersion());
+        // String versionDetail = OS.getVendor()+" "+OS.getVendorName();
         systemInfo.setVersionDetail(OS.getDescription()+" "+OS.getArch());
         systemInfo.setState("1");
         return systemInfo;
@@ -132,7 +133,7 @@ public class SigarUtil {
                 deskState.setCreateTime(t);
                 list.add(deskState);
             }catch (SigarException e){
-                logger.error(e.toString());
+                // logger.error("---------------"+e.toString());
             }
         }
         DeskState deskStateSum = new DeskState();

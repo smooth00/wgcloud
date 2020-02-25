@@ -36,7 +36,7 @@
         <section class="content">
             <div class="card card-primary">
                 <div class="card-header">
-                    <div>主机：<span id="hostname" th:text="${systemInfo.hostname}"></span> 系统版本：<span id="osversion" th:text="${systemInfo.version}"></span>
+                    <div>主机：<span id="hostname" th:text="${systemInfo.hostname}"></span> 系统：<span id="osversion" th:text="${systemInfo.version}"></span> <span th:text="${systemInfo.versionDetail}"></span>，cpu核数：<span th:text="${systemInfo.cpuCoreNum}"></span>
                         <span id="cc"></span> <div class=" float-sm-right"><a th:href="@{'/dash/systemInfoList'}">返回</a></div>
                     </div>
                 </div>

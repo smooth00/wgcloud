@@ -89,7 +89,7 @@ public class ScheduledTask {
             }
             if(systemInfo!=null) {
                 if(memState!=null) {
-                    systemInfo.setVersionDetail(systemInfo.getVersion()+"，总内存："+ FormatUtil.mToG(memState.getTotal()+"M")+"G");
+                    systemInfo.setVersionDetail(systemInfo.getVersionDetail()+"，总内存："+ FormatUtil.mToG(memState.getTotal()+"M")+"G");
                     systemInfo.setMemPer(memState.getUsePer());
                 }else{
                     systemInfo.setMemPer(0d);
