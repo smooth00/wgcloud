@@ -30,8 +30,6 @@ public class SigarUtil {
     private static  Sigar sigar = new Sigar();
     private static   OperatingSystem OS = OperatingSystem.getInstance();
 
-
-
     /**
      * 获取内存使用信息
      * @return
@@ -79,8 +77,6 @@ public class SigarUtil {
         return cpuState;
     }
 
-
-
     /**
      * 获取操作系统信息
      * @return
@@ -101,7 +97,6 @@ public class SigarUtil {
         systemInfo.setState("1");
         return systemInfo;
     }
-
 
     /**
      * 获取磁盘使用信息
@@ -186,6 +181,4 @@ public class SigarUtil {
         }
         return null;
     }
-
-
 }
