@@ -38,12 +38,9 @@ import java.util.concurrent.TimeUnit;
 @Controller
 @RequestMapping("/agent")
 public class AgentController {
-	
-	 
 	private static final Logger logger = LoggerFactory.getLogger(AgentController.class);
 
-	 ThreadPoolExecutor executor = new ThreadPoolExecutor(10, 40, 2, TimeUnit.MINUTES, new LinkedBlockingDeque<>());
-
+	ThreadPoolExecutor executor = new ThreadPoolExecutor(10, 40, 2, TimeUnit.MINUTES, new LinkedBlockingDeque<>());
 
 	@Resource
     private LogInfoService logInfoService;
@@ -69,10 +66,10 @@ public class AgentController {
 		JSONArray appStateList = agentJsonObject.getJSONArray("appStateList");
 		JSONObject logInfo = agentJsonObject.getJSONObject("logInfo");
 		JSONObject systemInfo = agentJsonObject.getJSONObject("systemInfo");
+		JSONObject netIoState = agentJsonObject.getJSONObject("netIoState");
 		JSONArray deskStateList = agentJsonObject.getJSONArray("deskStateList");
 
 		try{
-
 			if(logInfo!=null){
 				LogInfo bean = new LogInfo();
 				BeanUtil.copyProperties(logInfo,bean);
@@ -101,6 +98,11 @@ public class AgentController {
 				SysLoadState bean = new SysLoadState();
 				BeanUtil.copyProperties(sysLoadState,bean);
 				BatchData.SYSLOAD_STATE_LIST.add(bean);
+			}
+			if(netIoState!=null){
+				NetIoState bean = new NetIoState();
+				BeanUtil.copyProperties(netIoState,bean);
+				BatchData.NETIO_STATE_LIST.add(bean);
 			}
 			if(appInfoList!=null && appStateList!=null){
 				List<AppInfo> appInfoResList = JSONUtil.toList(appInfoList, AppInfo.class);

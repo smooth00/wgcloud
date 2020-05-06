@@ -181,4 +181,36 @@ public class SigarUtil {
         }
         return null;
     }
+
+    /**
+     * 获取网络信息
+     * @return
+     */
+    public static NetIoState net() throws Exception {
+        String ifNames[] = sigar.getNetInterfaceList();
+        int rxBytesSum=0;
+        int txBytesSum=0;
+        int rxPackets=0;
+        int txPackets=0;
+        for (int i = 0; i < ifNames.length; i++) {
+            String name = ifNames[i];
+            NetInterfaceConfig ifconfig = sigar.getNetInterfaceConfig(name);
+            if ((ifconfig.getFlags() & 1L) <= 0L) {
+                logger.error("!IFF_UP...skipping getNetInterfaceStat");
+                continue;
+            }
+            NetInterfaceStat ifstat = sigar.getNetInterfaceStat(name);
+            rxBytesSum += (ifstat.getRxBytes() / 1024);
+            txBytesSum += (ifstat.getTxBytes() / 1024);
+            rxPackets += ifstat.getRxPackets();
+            txPackets += ifstat.getTxPackets();
+        }
+        NetIoState netIoState = new NetIoState();
+        netIoState.setRxbyt(rxBytesSum+"");
+        netIoState.setTxbyt(txBytesSum+"");
+        netIoState.setRxpck(rxPackets+"");
+        netIoState.setTxpck(txPackets+"");
+        netIoState.setHostname(commonConfig.getBindIp());
+        return netIoState;
+    }
 }

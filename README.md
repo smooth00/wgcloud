@@ -7,7 +7,7 @@
 
 ## WGCLOUD-v2.3.5
 
-[中文版README](https://github.com/tianshiyeben/wgcloud/blob/master/README_zh.md)
+[中文版README](./README_zh.md)
 
 Wgcloud is a distributed monitoring platform based on Java language. Its core modules include: server cluster monitoring, ES cluster monitoring, CPU monitoring, memory monitoring, data monitoring(mysql，oracle，pg), service heartbeat detection, application process management, disk IO monitoring, system load monitoring, monitoring alarm information push.
 
@@ -17,11 +17,7 @@ Wgcloud is a distributed monitoring platform based on Java language. Its core mo
 
 3.Support the installation and deployment of mainstream server platforms, such as Linux, windows, Solaris, AIX, HP-UX, etc.
 
-4.Run the so and DLL files of the required sigar. Please download the agent installation package in the wgcloud-agent/lib folder.
-
-5.Run the required SQL script, and you can see it in the installation package after decompression.
-
-6.Wgcloud adopts the microservice springboot + bootstrap to realize the distributed monitoring system perfectly, which is open-source community and secondary open-source.
+4.In the installation package (**Note: not in the warehouse**), click the download link below to download the installation package. After downloading, unzip it. In the wgcloud agent / lib folder.
 
 ## download
 
@@ -48,16 +44,3 @@ Wgcloud is a distributed monitoring platform based on Java language. Its core mo
 
 3.mysql5.6 或 5.7
 
-
-
-## contact
-
-tianshiyeben@qq.com
-
-
-
-## Support open source
-
-If you think this application project is helpful to you, you can appreciate the author. Thousands of rivers and mountains are always in love!
-
-![c.jpg](./demo/wxzf.jpg)
