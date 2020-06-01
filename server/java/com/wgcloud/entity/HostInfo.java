@@ -44,7 +44,7 @@ public class HostInfo extends BaseEntity{
     private String passwd;
 
 	/**
-	 * 密码
+	 * 备注
 	 */
 	private String remark;
 

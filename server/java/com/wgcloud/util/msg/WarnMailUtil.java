@@ -5,6 +5,7 @@ import com.wgcloud.config.CommonConfig;
 import com.wgcloud.config.MailConfig;
 import com.wgcloud.entity.*;
 import com.wgcloud.service.LogInfoService;
+import com.wgcloud.util.GetIpAndPort;
 import com.wgcloud.util.staticvar.StaticKeys;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.mail.DefaultAuthenticator;
@@ -28,7 +29,7 @@ public class WarnMailUtil {
 	
 	private static final Logger logger = LoggerFactory.getLogger(WarnMailUtil.class);
 
-	public static final String content_suffix = "<p><a target='_blank' href='http://www.wgstart.com'>WGCLOUD监控系统</a>敬上";
+	public static final String content_suffix = "<p><a target='_blank' href='http://"+ GetIpAndPort.getIpAndPort() +"'>WGCLOUD监控系统</a>敬上";
 	
 	private static LogInfoService logInfoService = (LogInfoService) ApplicationContextHelper.getBean(LogInfoService.class);
     private static MailConfig mailConfig = (MailConfig) ApplicationContextHelper.getBean(MailConfig.class);
@@ -281,8 +282,5 @@ public class WarnMailUtil {
             return "error";
         }
     }
-
-
-	
 
 }
